@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "Red-it",
+  "version": "1.0",
+  "description": "A simple Chrome extension created with React",
+  "permissions": ["storage", "activeTab"],
+  "browser_action": {
+    "default_popup": "index.html",
+    "default_icon": "icon.png"
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["contentScript.js"]
+    }
+  ]
+}
+

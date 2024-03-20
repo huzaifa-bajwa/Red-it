@@ -19,3 +19,7 @@ class ContextQuery(BaseModel):   #This is the model for the Context Query
     data: str
     highlighted_text: str
 
+class FlashcardOrSummary(BaseModel):   #This is the model for the Flashcards and Summary
+    language: str
+    url: str
+

@@ -1,9 +1,11 @@
 from fastapi import FastAPI, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
-from model import User, UserLogin, TextData, PresentationData, ContextQuery
+from model import User, UserLogin, TextData, PresentationData, ContextQuery, FlashcardOrSummary
 from database import add_user, get_user, autheticate_user
 from interactionwithGPT import generate_summary, generate_flashcard, generate_powerpoint, generate_context_query
-
+from email_verify import email_verifier
+from name_validation import is_valid_name
+from webscraping import getWebPageContent
 app = FastAPI()
 
 
@@ -23,14 +25,21 @@ async def root():
 
 @app.post("/newuser/")
 async def create_user(user: User):
-    response = await add_user(user.username, user.email, user.password)
-    if response['status'] == True:
-        return {"message": "User has been created"}
-    else:
-        if response['error'] == "Email":
-            raise HTTPException(status_code=400, detail="Email already exists")
+    email_response = email_verifier(user.email)
+    if email_response == False:
+        raise HTTPException(status_code=400, detail="Invalid email")
+    else:    
+        if is_valid_name(user.username) == False:
+            raise HTTPException(status_code=400, detail="Invalid username. Username should only contain alphabets and spaces.")
         else:
-            raise HTTPException(status_code=400, detail="User already exists")
+            response = await add_user(user.username, user.email, user.password)
+            if response['status'] == True:
+                return {"message": "User has been created"}
+            else:
+                if response['error'] == "Email":
+                    raise HTTPException(status_code=400, detail="Email already exists")
+                else:
+                    raise HTTPException(status_code=400, detail="User already exists")
 
 @app.post("/login/")
 async def login_user(user: UserLogin):
@@ -41,8 +50,13 @@ async def login_user(user: UserLogin):
         raise HTTPException(status_code=400, detail="Invalid credentials")
 
 @app.post("/summary/")
-async def create_summary(query: TextData):
-    response = generate_summary(query.data)
+async def create_summary(query: FlashcardOrSummary):
+    # print(query.data)
+    # response = generate_summary(query.data)
+    # return {"summary": response}
+    print(query.url)
+    data = getWebPageContent(query.url)
+    response = generate_summary(data)
     return {"summary": response}
 
 @app.post("/flashcard/")
@@ -59,6 +73,8 @@ async def create_presentation(query: PresentationData):
 async def create_context(query: ContextQuery):
     response = generate_context_query(query.data, query.highlighted_text)
     return {"context": response}
+
+
 
 
 

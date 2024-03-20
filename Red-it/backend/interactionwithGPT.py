@@ -1,9 +1,18 @@
 from openai import OpenAI
-
+def tokens_test(input_text):
+    max_tokens = 60000
+    tokens = input_text.split()
+    if len(tokens) > max_tokens:
+        # Adjust the logic below based on your requirements
+        # This example simply trims tokens from the start
+        adjusted_tokens = tokens[-max_tokens:]
+        return " ".join(adjusted_tokens)
+    return input_text
 def generate_summary(data):
-    client = OpenAI(api_key='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')
+    data = tokens_test(data)
+    client = OpenAI(api_key=)
     response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
+        model="gpt-4-0125-preview",
         messages=[
             {"role": "system", "content": "You are an assistant skilled in summarizing texts, making complex information concise and straightforward."},
             {"role": "user", "content": f"Summarize this text: {data}"}
@@ -19,9 +28,10 @@ def remove_special_characters(string):
     return string
 
 def generate_flashcard(data): # Function to generate flashcards from the input data. It retunrs a list of parsed flashcards
-    client = OpenAI(api_key='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')
+    data = tokens_test(data)
+    client = OpenAI(api_key=)
     response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
+        model="gpt-4-0125-preview",
         messages=[
             {"role": "system", "content": "You are an assistant skilled in generating flashcards from texts. Create flashcards that identify key points and their explanations."},
             {"role": "user", "content": f"Generate flashcards from this text: {data} Each flashcard must start with a number (e.g., '1.') and contain key points only, formatted in a single paragraph.Generate a maximum of 10 flashcards."}
@@ -40,9 +50,10 @@ def generate_flashcard(data): # Function to generate flashcards from the input d
 
 def generate_powerpoint(data):
     # Implementing a logic similar to generate_summary for PowerPoint content
-    client = OpenAI(api_key='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')
+    data = tokens_test(data)
+    client = OpenAI(api_key=)
     response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model="gpt-4-0125-preview",
             messages=[
                 {"role": "system", "content": "You are an assistant skilled in generating presentation content from texts."},
                 {"role": "user", "content": f"Produce presentation slides from the following text: {data}. For each slide, craft content that highlights key points along with their explanations. Begin every slide with a numeral (e.g., '1.'), followed by a slide title, and then the slide's content, all formatted within a single paragraph.  Generate a maximum of 10 slides."}
@@ -67,7 +78,7 @@ def generate_powerpoint(data):
 
 def generate_context_query(webpage_data, highlighted_text):
     # Combine the webpage data and highlighted query with a suitable prompt
-    client = OpenAI(api_key='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')
+    client = OpenAI(api_key='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')
     response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[

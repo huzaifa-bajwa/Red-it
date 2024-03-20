@@ -9,7 +9,7 @@ This web extension is designed to enhance your browsing experience by providing 
 1. Clone the repository to your local machine using `git clone [repository-url]`.
 2. Navigate to the extension management page in your browser (usually found at `chrome://extensions` for Chrome or `about:addons` for Firefox).
 3. Enable Developer Mode (for Chrome) or enter Debugging mode (for Firefox).
-4. Select the build folder.
+4. Select the build folder from the frontend directory.
 5. The extension should now be installed and visible in your browser's extension toolbar.
 
 ## Usage

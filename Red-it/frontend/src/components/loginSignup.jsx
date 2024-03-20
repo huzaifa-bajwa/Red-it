@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
 import "./LoginSignup.css";
 import userIcon from "./Assets/user.png";
@@ -6,7 +6,29 @@ import emailIcon from "./Assets/mail.png";
 import lockIcon from "./Assets/padlock.png";
 import Summary from './summary.jsx';
 
-function LoginSignup(){
+function LoginSignup() {
+  const [currentUrl, setCurrentUrl] = useState('');
+
+  function fetchCurrentTabUrl() {
+    return new Promise((resolve, reject) => {
+      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        if (chrome.runtime.lastError) {
+          reject(new Error(chrome.runtime.lastError.message));
+        } else if (tabs.length === 0) {
+          reject(new Error('No active tab found'));
+        } else {
+          console.log(tabs[0].url);
+          resolve(tabs[0].url);
+        }
+      });
+    });
+  };
+
+  useEffect(() => {
+    fetchCurrentTabUrl().then(url => {
+      setCurrentUrl(url);
+    });
+  }, []);
 
   const [isLoginActive, setIsLoginActive] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -48,7 +70,7 @@ function LoginSignup(){
       alert("Network or fetch error:", error.message);
     }
   };
-  
+
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
     const form = event.target;

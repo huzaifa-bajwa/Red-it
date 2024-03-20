@@ -7,28 +7,28 @@ import lockIcon from "./Assets/padlock.png";
 import Summary from './summary.jsx';
 
 function LoginSignup() {
-  const [currentUrl, setCurrentUrl] = useState('');
+  // const [currentUrl, setCurrentUrl] = useState('');
 
-  function fetchCurrentTabUrl() {
-    return new Promise((resolve, reject) => {
-      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        if (chrome.runtime.lastError) {
-          reject(new Error(chrome.runtime.lastError.message));
-        } else if (tabs.length === 0) {
-          reject(new Error('No active tab found'));
-        } else {
-          console.log(tabs[0].url);
-          resolve(tabs[0].url);
-        }
-      });
-    });
-  };
+  // function fetchCurrentTabUrl() {
+  //   return new Promise((resolve, reject) => {
+  //     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+  //       if (chrome.runtime.lastError) {
+  //         reject(new Error(chrome.runtime.lastError.message));
+  //       } else if (tabs.length === 0) {
+  //         reject(new Error('No active tab found'));
+  //       } else {
+  //         console.log(tabs[0].url);
+  //         resolve(tabs[0].url);
+  //       }
+  //     });
+  //   });
+  // };
 
-  useEffect(() => {
-    fetchCurrentTabUrl().then(url => {
-      setCurrentUrl(url);
-    });
-  }, []);
+  // useEffect(() => {
+  //   fetchCurrentTabUrl().then(url => {
+  //     setCurrentUrl(url);
+  //   });
+  // }, []);
 
   const [isLoginActive, setIsLoginActive] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -59,11 +59,11 @@ function LoginSignup() {
 
       if (response.ok) {
         const data = await response.json();
-        alert("User creation successful:", data);
+        alert("User creation successful: " + data);
         // Proceed with any post-user creation flow
       } else {
         const errorData = await response.json();
-        alert("User creation error:", errorData.detail);
+        alert("User creation error: " + errorData.detail);
         // Handle user creation error (e.g., show error message)
       }
     } catch (error) {

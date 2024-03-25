@@ -59,7 +59,7 @@ async function loginUser(email, password) {
     }
 }
 
-async function generateSummary(data, language) {
+async function generateSummary(url, language) {
   // Assuming you have `fetch` available in your environment or you have dynamically imported `node-fetch` in a Node.js environment
   const fetch = (await import('node-fetch')).default; // Remove this line if using in a browser environment where fetch is globally available
   try {
@@ -69,8 +69,8 @@ async function generateSummary(data, language) {
               'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-              data: data,   // Assuming `data` is the input data for which you want to generate a summary. It should be in string
               language: language,  // Assuming `language` is the language in which the summary should be generated. It should be in string
+              url: url,
           }),
       });
 
@@ -88,7 +88,7 @@ async function generateSummary(data, language) {
   }
 }
 
-async function generateFlashcards(data, language) {
+async function generateFlashcards(url, language) {
   // Assuming you have `fetch` available in your environment or you have dynamically imported `node-fetch` in a Node.js environment
   const fetch = (await import('node-fetch')).default; // Remove this line if using in a browser environment where fetch is globally available
   try {
@@ -98,8 +98,8 @@ async function generateFlashcards(data, language) {
               'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-              data: data,
               language: language, // Include this only if your backend expects a language parameter for flashcards
+              url: url,
           }),
       });
 
@@ -126,5 +126,5 @@ loginUser('24100249@lums.edu.pk', 'mypassword');
 //createUser("SyedKabir", "avc", "def")
 
 const webpage_data = "Astronomy is a natural science that studies celestial objects and the phenomena that occur in the cosmos. It uses mathematics, physics, and chemistry in order to explain their origin and their overall evolution. Objects of interest include planets, moons, stars, nebulae, galaxies, meteoroids, asteroids, and comets. Relevant phenomena include supernova explosions, gamma ray bursts, quasars, blazars, pulsars, and cosmic microwave background radiation. More generally, astronomy studies everything that originates beyond Earth's atmosphere. Cosmology is a branch of astronomy that studies the universe as a whole.  Astronomy is one of the oldest natural sciences. The early civilizations in recorded history made methodical observations of the night sky. These include the Egyptians, Babylonians, Greeks, Indians, Chinese, Maya, and many ancient indigenous peoples of the Americas. In the past, astronomy included disciplines as diverse as astrometry, celestial navigation, observational astronomy, and the making of calendars. Professional astronomy is split into observational and theoretical branches. Observational astronomy is focused on acquiring data from observations of astronomical objects. This data is then analyzed using basic principles of physics. Theoretical astronomy is oriented toward the development of computer or analytical models to describe astronomical objects and phenomena. These two fields complement each other. Theoretical astronomy seeks to explain observational results and observations are used to confirm theoretical results. Astronomy is one of the few sciences in which amateurs play an active role. This is especially true for the discovery and observation of transient events. Amateur astronomers have helped with many important discoveries, such as finding new comets." 
-
-// generateFlashcards(webpage_data, "English")
+const url = "https://en.wikipedia.org/wiki/Astronomy"
+// generateFlashcards(url, "English")

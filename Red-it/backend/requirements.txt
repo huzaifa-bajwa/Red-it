@@ -3,7 +3,8 @@ Run the following commands to install the required packages (if not already inss
     2. pip install fastapi "uvicorn[standard]"
     3. pip install motor
     4. pip install pydantic
-    5. python -m venv openai-env
+    5. pip install tiktoken
+    6. python -m venv openai-env
        openai-env\Scripts\activate
        pip install --upgrade openai
 

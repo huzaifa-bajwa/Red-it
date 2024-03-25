@@ -14,9 +14,10 @@ class TextData(BaseModel):   #This is the model for the Summary and Flashcards
     language: str
 
 class PresentationData(BaseModel):   #This is the model for the Presentation
-    data: str
+    url: str
+
 class ContextQuery(BaseModel):   #This is the model for the Context Query
-    data: str
+    url: str
     highlighted_text: str
 
 class FlashcardOrSummary(BaseModel):   #This is the model for the Flashcards and Summary

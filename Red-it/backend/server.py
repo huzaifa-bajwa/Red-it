@@ -6,6 +6,7 @@ from interactionwithGPT import generate_summary, generate_flashcard, generate_po
 from email_verify import email_verifier
 from name_validation import is_valid_name
 from webscraping import getWebPageContent
+from translator import translate_text_to_target_language
 app = FastAPI()
 
 
@@ -51,33 +52,35 @@ async def login_user(user: UserLogin):
 
 @app.post("/summary/")
 async def create_summary(query: FlashcardOrSummary):
-    # print(query.data)
-    # response = generate_summary(query.data)
-    # return {"summary": response}
     print(query.url)
     data = getWebPageContent(query.url)
-    response = generate_summary(data)
+    gptresponse = generate_summary(data)
+    language = query.language
+    response = translate_text_to_target_language(gptresponse, language.lower())
     return {"summary": response}
 
 @app.post("/flashcard/")
-async def create_flashcards(query: TextData):
-    response = generate_flashcard(query.data)
+async def create_flashcards(query: FlashcardOrSummary):
+    print(query.url)
+    data = getWebPageContent(query.url)
+    gptresponse = generate_flashcard(data)
+    language = query.language
+    response =[]
+    for i in gptresponse:
+        response.append(translate_text_to_target_language(i, language.lower()))
     return {"flashcards": response}
 
 @app.post("/presentation/")
 async def create_presentation(query: PresentationData):
-    response = generate_powerpoint(query.data)
+    print(query.url)
+    data = getWebPageContent(query.url)
+    response = generate_powerpoint(data)
     return {"presentation": response}
 
 @app.post("/context/")
 async def create_context(query: ContextQuery):
-    response = generate_context_query(query.data, query.highlighted_text)
+    print(query.url)
+    data = getWebPageContent(query.url)
+    response = generate_context_query(data, query.highlighted_text)
     return {"context": response}
-
-
-
-
-
-
-
 

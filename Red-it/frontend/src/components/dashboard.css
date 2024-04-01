@@ -1,0 +1,116 @@
+.dashboard {
+    background-color: #086d78;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+  }
+  
+  .header-box {
+    background-color: #086d78;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 10px;
+    font-size: 14px;
+  }
+  
+  .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    background-color: #557d81;
+    padding: 5px;
+    width: 350px;
+    height: 50px;
+  }
+  
+  .heading {
+    padding-left: 10px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .logout-button {
+    background-color: transparent;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 5px;
+    color: white;
+  }
+  
+  .logout-button:hover {
+    background-color: #010101;
+  }
+  
+  .btns-container {
+    background-color: #0b454b;
+    width: 300px;
+    margin: 0 auto 20px auto;
+    padding: 10px;
+    border-radius: 10px;
+    height: 200px;
+    overflow-y: auto;
+    max-height: 500px;
+  }
+  
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .dashboard-button {
+    background-color: #557d81;
+    border: 1px solid white;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 15px;
+    width : 200px;
+  }
+  
+  .dashboard-button:hover {
+    background-color: #010101;
+  }
+  
+
+  .language-select {
+    margin: 20px auto; 
+    width: 250px; 
+}
+
+.language-select select {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    background-color: #557d81;
+    color: white;
+    cursor: pointer;
+    outline: none;
+}
+
+.language-select select:hover {
+    background-color: #010101;
+}
+
+.language-select select:focus {
+    background-color: #010101;
+    color: #fff;
+}
+
+.language-info {
+    text-align: center;
+    font-size: 16px;
+    color: white;
+    margin-bottom: 10px;
+}

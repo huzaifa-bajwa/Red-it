@@ -1,39 +1,14 @@
 import React, { useState, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
 import "./LoginSignup.css";
 import userIcon from "./Assets/user.png";
 import emailIcon from "./Assets/mail.png";
 import lockIcon from "./Assets/padlock.png";
 import Summary from './summary.jsx';
+import Dashboard from './dashboard.jsx';
 
 function LoginSignup() {
-  // const [currentUrl, setCurrentUrl] = useState('');
-
-  // function fetchCurrentTabUrl() {
-  //   return new Promise((resolve, reject) => {
-  //     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-  //       if (chrome.runtime.lastError) {
-  //         reject(new Error(chrome.runtime.lastError.message));
-  //       } else if (tabs.length === 0) {
-  //         reject(new Error('No active tab found'));
-  //       } else {
-  //         console.log(tabs[0].url);
-  //         resolve(tabs[0].url);
-  //       }
-  //     });
-  //   });
-  // };
-
-  // useEffect(() => {
-  //   fetchCurrentTabUrl().then(url => {
-  //     setCurrentUrl(url);
-  //   });
-  // }, []);
-
   const [isLoginActive, setIsLoginActive] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  // const navigate = useNavigate();
 
   const handleSignupSubmit = async (event) => {
     event.preventDefault();
@@ -60,11 +35,9 @@ function LoginSignup() {
       if (response.ok) {
         const data = await response.json();
         alert("User creation successful: " + data);
-        // Proceed with any post-user creation flow
       } else {
         const errorData = await response.json();
         alert("User creation error: " + errorData.detail);
-        // Handle user creation error (e.g., show error message)
       }
     } catch (error) {
       alert("Network or fetch error:", error.message);
@@ -94,20 +67,24 @@ function LoginSignup() {
       if (response.ok) {
         const data = await response.json();
         alert("Login successful:", data);
-        setIsLoggedIn(true)
+        localStorage.setItem("loggedInUser", true);
+        setIsLoggedIn(true);
         // Proceed with user login flow
       } else {
         const errorData = await response.json();
         alert("Login error:", errorData.detail);
-        // Handle login error (e.g., show error message)
       }
     } catch (error) {
       alert("Network or fetch error:", error.message);
     }
   };
-
-  if (isLoggedIn) {
-    return <Summary />;
+  const handleLogout = () => {
+    localStorage.removeItem("loggedInUser");
+    setIsLoggedIn(false);
+  };
+  const isLoggedIn2 = localStorage.getItem('loggedInUser');
+  if (isLoggedIn2) {
+    return <Dashboard onLogout={handleLogout} />;
   }
 
   return (
@@ -152,6 +129,7 @@ function LoginSignup() {
           <button type="submit" className="btn">
             Login
           </button>
+          <div className="invisible-placeholder"></div>
         </form>
       ) : (
         <form className="form" onSubmit={handleSignupSubmit}>

@@ -21,7 +21,7 @@ def tokens_test(input_text):
 
 def generate_summary(data):
     data = tokens_test(data)
-    client = OpenAI(api_key=)
+    client = OpenAI(api_key='')
     response = client.chat.completions.create(
         model="gpt-3.5-turbo-0125",
         messages=[
@@ -40,7 +40,7 @@ def remove_special_characters(string):
 
 def generate_flashcard(data): # Function to generate flashcards from the input data. It retunrs a list of parsed flashcards
     data = tokens_test(data)
-    client = OpenAI(api_key=)
+    client = OpenAI(api_key='')
     response = client.chat.completions.create(
         model="gpt-3.5-turbo-0125",
         messages=[
@@ -62,7 +62,7 @@ def generate_flashcard(data): # Function to generate flashcards from the input d
 def generate_powerpoint(data):
     # Implementing a logic similar to generate_summary for PowerPoint content
     data = tokens_test(data)
-    client = OpenAI(api_key=)
+    client = OpenAI(api_key='')
     response = client.chat.completions.create(
             model="gpt-3.5-turbo-0125",
             messages=[
@@ -123,7 +123,7 @@ def tokens_test_for_context_query(webpage_data, highlighted_text):
 def generate_context_query(webpage_data, highlighted_text):
     # Combine the webpage data and highlighted query with a suitable prompt
     webpage_data, highlighted_text = tokens_test_for_context_query(webpage_data, highlighted_text)
-    client = OpenAI(api_key=)
+    client = OpenAI(api_key='')
     response = client.chat.completions.create(
             model="gpt-3.5-turbo-0125",
             messages=[

@@ -20,6 +20,10 @@ body {
   border-radius: 20px;
   padding: 40px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Adds shadow for depth */
+  min-height: 350px; /* Set a minimum height */
+  display: flex; /* Make it a flex container */
+  flex-direction: column; /* Stack children vertically */
+  justify-content: space-between; /* Distribute space between items */
 }
 
 /* Rest of your CSS for labels, inputs, and buttons */
@@ -100,4 +104,10 @@ body {
 .toggle-buttons button:not(.active) {
   background-color: #e0e0e0;
   color: #757575;
+}
+
+.invisible-placeholder {
+  display: block;
+  visibility: hidden;
+  height: 20px; /* Match the height of your input fields */
 }

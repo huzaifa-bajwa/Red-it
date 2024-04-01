@@ -3,52 +3,115 @@ import './flashcards.css';
 
 function FlashCards() {
     const [fontSize, setFontSize] = useState(14); // Initial font size
+    const [fontSize2, setFontSize2] = useState(16); // Initial font size
     const [flashcards, setFlashcards] = useState([]);
+    const [currentUrl, setCurrentUrl] = useState("");
+    const [language, setLanguage] = useState("Change Language");
 
-    useEffect(() => {
-        // Fetch flashcards when component mounts
-        fetchFlashcards();
-    }, []); // Empty dependency array ensures the effect runs only once when the component mounts
-
+    const handleLanguageChange = (newLanguage) => {
+        return () => {
+            setLanguage(newLanguage);
+            // setSummary("Loading...");
+        };
+    };
+    
     const increaseFontSize = () => {
         setFontSize(prevFontSize => prevFontSize + 1); // Increase font size by 1
+        setFontSize2(prevFontSize => prevFontSize + 1); // Increase font size by 1
     };
 
     const decreaseFontSize = () => {
         setFontSize(prevFontSize => (prevFontSize > 1 ? prevFontSize - 1 : prevFontSize)); // Decrease font size by 1, but never below 1
+        setFontSize2(prevFontSize => (prevFontSize > 1 ? prevFontSize - 1 : prevFontSize)); // Decrease font size by 1, but never below 1
     };
 
-    const fetchFlashcards = async () => {
-        try {
-            const response = await fetch('http://127.0.0.1:8000/flashcard/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    // data: data,
-                    // language: language, // Include this only if your backend expects a language parameter for flashcards
-                }),
+    function fetchCurrentTabUrl() {
+        return new Promise((resolve, reject) => {
+            chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+                if (chrome.runtime.lastError) {
+                    reject(new Error(chrome.runtime.lastError.message));
+                } else if (tabs.length === 0) {
+                    reject(new Error("No active tab found"));
+                } else {
+                    console.log(tabs[0].url);
+                    resolve(tabs[0].url);
+                }
             });
+        });
+    }
 
-            if (response.ok) {
-                const flashcardsData = await response.json();
-                setFlashcards(flashcardsData.flashcards); // Update state with fetched flashcards
-            } else {
-                const errorData = await response.json();
-                console.error('Error fetching flashcards:', errorData.detail);
-            }
-        } catch (error) {
-            console.error('Network or fetch error:', error.message);
-        }
-    };
+    useEffect(() => {
+        fetchCurrentTabUrl()
+            .then((url) => {
+                setCurrentUrl(url);
+                fetch("http://127.0.0.1:8000/flashcard/", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        language: language === "Change Language" ? "english" : language.toLowerCase(),
+                        url: url,
+                    }),
+                })
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error("Network response was not ok");
+                        }
+                        return response.json();
+                    })
+                    .then((data) => {
+                        console.log(data.flashcards);
+                        // setFlashcards(data.flashcards);
+                        const parsedData = parsedata(data.flashcards);
+                        console.log(parsedData);
+                        setFlashcards(parsedData);
+                    })
+                    .catch((error) => {
+                        console.error("Error fetching flashcards: " + error);
+                    });
+            })
+            .catch((error) => {
+                console.error("Error fetching current tab URL: " + error);
+            });
+    }, [language]);
+
+    const parsedata = (arr) => {
+        return arr.map(str => {
+          const splitIndex = str.indexOf(":");
+          return {
+            title: str.substring(0, splitIndex),
+            content: str.substring(splitIndex + 2)
+          };
+        });
+      };
 
     const cardStyle = {
         fontSize: `${fontSize}px` // Set font size dynamically
     };
+    const titleStyle = {
+        fontSize: `${fontSize2}px` // Set font size dynamically
+    };
 
     return (
         <div className="bdy">
+            <div class="dropdown">
+                <button class="dropbtn">{language}</button>
+                <div class="dropdown-content">
+                    <a onClick={handleLanguageChange("English")}>English</a>
+                    <a onClick={handleLanguageChange("Urdu")}>Urdu</a>
+                    <a onClick={handleLanguageChange("Arabic")}>Arabic</a>
+                    <a onClick={handleLanguageChange("Hindi")}>Hindi</a>
+                    <a onClick={handleLanguageChange("Chinese")}>Chinese</a>
+                    <a onClick={handleLanguageChange("Frech")}>Frech</a>
+                    <a onClick={handleLanguageChange("German")}>German</a>
+                    <a onClick={handleLanguageChange("Italian")}>Italian</a>
+                    <a onClick={handleLanguageChange("Japanese")}>Japanese</a>
+                    <a onClick={handleLanguageChange("Korean")}>Korean</a>
+                    <a onClick={handleLanguageChange("Russian")}>Russian</a>
+                    <a onClick={handleLanguageChange("Spanish")}>Spanish</a>
+                </div>
+            </div>
             <div className="content-box">
                 <div className="header">
                     <span className="title">Flash Cards</span>
@@ -60,8 +123,8 @@ function FlashCards() {
                 <div className="card-grid">
                     {flashcards.map((flashcard, index) => (
                         <div className="card" key={index}>
-                            <span className="title">{flashcard.title}</span>
-                            <p style={cardStyle}>{flashcard.content}</p>
+                            <span className="title">{flashcard.title || "No Title"}</span>
+                            <p style={cardStyle}>{flashcard.content|| "No Content"}</p>
                         </div>
                     ))}
                 </div>

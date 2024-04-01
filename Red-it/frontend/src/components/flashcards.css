@@ -1,25 +1,20 @@
 .card-grid{
     background-color: #0b454b;
     width: 300px;
-    /* Match the width of the header to align them */
     margin: 0 auto 20px auto;
-    /* Top and bottom margins are 0 and 20px respectively, left and right margins are auto */
     padding: 10px;
-    /* Padding inside the container */
     border-radius: 10px;
-    /* Optional rounded corners */
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
     column-gap: 20px; 
     row-gap: 10px;
     height:350px;
-    max-height: 350px; /* Adjust the height as needed */
+    max-height: 350px;
     overflow-y: auto;
 }
 
 .card {
-    /* background: #316d64be; */
     background-color: #557d81;
     color: white;
     padding: 20px;
@@ -28,8 +23,6 @@
     width: auto;
     height: auto;
 }
-
-/* Responsive adjustments can be added here */
 
 .bdy {
     background-color: #086d78;
@@ -40,20 +33,14 @@
     justify-content: center;
     align-items: center;
     height: 500px;
-    /* overflow-y: scroll; */
-    /* min-height: 800px; */
-    /* max-height: 800px; */
 }
 
 .content-box {
-    /* border-radius: 10px; */
     background-color: #086d78;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin: 10px;
     font-size: 14px;
-    /* overflow-y: scroll;
-    max-height: 600px; */
 }
 
 .header {
@@ -62,8 +49,6 @@
     align-items: center;
     border-radius: 20px;
     background-color: #557d81;
-
-    /* background-color: #0eecd6be; */
     padding: 5px;
     width: 350px;
     height: 50px;
@@ -90,3 +75,55 @@
     background-color: #010101;
 }
 
+
+
+.dropbtn {
+    background-color: #557d81;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width: 350px;
+    text-align: left;
+    border-radius: 20px;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    width: 3500px;
+    background-color: #086d78;
+  }
+  
+
+  .dropdown-content {
+    color: white;
+    display: none;
+    position: absolute;
+    background-color: #316d64be;
+    min-width: 3500px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 20px;
+  }
+  
+
+  .dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {background-color: #24534cbe}
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown:hover .dropbtn {
+    background-color: #24534cbe;
+  }
+
+  

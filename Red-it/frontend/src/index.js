@@ -15,7 +15,7 @@ root.render(
     {/* <Popup /> */}
     {/* <FlashCards /> */}
     {/* <Summary /> */}
-    <LoginSignup />
+    <App />
   </React.StrictMode>
 );
 

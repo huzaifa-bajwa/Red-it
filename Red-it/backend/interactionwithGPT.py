@@ -56,7 +56,14 @@ def generate_flashcard(data): # Function to generate flashcards from the input d
         if len(key_point) > 3:
             splitted_key_point = key_point.split(" ")
             if len(splitted_key_point) > 1:
-                parsed_flashcards.append(" ".join(splitted_key_point[1:]))
+                entity = " ".join(splitted_key_point[1:])
+                entity = entity.replace("*", "")
+                parsed_flashcards.append(entity)
+    if len(parsed_flashcards) > 10 and len(parsed_flashcards)%2 == 0:
+        updated_flashcards = []
+        for i in range(0, len(parsed_flashcards), 2):
+            updated_flashcards.append(remove_special_characters(parsed_flashcards[i]) + ": " + parsed_flashcards[i+1])
+        return updated_flashcards
     return parsed_flashcards
 
 def generate_powerpoint(data):

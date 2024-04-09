@@ -1,12 +1,16 @@
 from fastapi import FastAPI, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
-from model import User, UserLogin, TextData, PresentationData, ContextQuery, FlashcardOrSummary
-from database import add_user, get_user, autheticate_user
+from fastapi import BackgroundTasks
+from model import User, UserLogin, TextData, PresentationData, ContextQuery, Summary, Flashcard, History, TranslateFlashcard, TranslateSummary
+from database import add_user, get_user, autheticate_user, add_history, get_history
 from interactionwithGPT import generate_summary, generate_flashcard, generate_powerpoint, generate_context_query
 from email_verify import email_verifier
 from name_validation import is_valid_name
 from webscraping import getWebPageContent
 from translator import translate_text_to_target_language
+
+
+
 app = FastAPI()
 
 
@@ -51,36 +55,74 @@ async def login_user(user: UserLogin):
         raise HTTPException(status_code=400, detail="Invalid credentials")
 
 @app.post("/summary/")
-async def create_summary(query: FlashcardOrSummary):
+async def create_summary(query: Summary, background_tasks: BackgroundTasks):
     print(query.url)
-    data = getWebPageContent(query.url)
-    gptresponse = generate_summary(data)
-    language = query.language
-    response = translate_text_to_target_language(gptresponse, language.lower())
-    return {"summary": response}
+    try:
+
+        data = getWebPageContent(query.url)
+        gptresponse = generate_summary(data)
+        language = query.language
+        response = translate_text_to_target_language(gptresponse, language.lower())
+        background_tasks.add_task(add_history, query.email, response, "Summary")
+        return {"summary": response}
+    except Exception as e:
+        print(e)
+        raise HTTPException(status_code=400, detail="Some Error Occurred")
 
 @app.post("/flashcard/")
-async def create_flashcards(query: FlashcardOrSummary):
+async def create_flashcards(query: Flashcard, background_tasks: BackgroundTasks):
     print(query.url)
-    data = getWebPageContent(query.url)
-    gptresponse = generate_flashcard(data)
-    language = query.language
-    response =[]
-    for i in gptresponse:
-        response.append(translate_text_to_target_language(i, language.lower()))
-    return {"flashcards": response}
+    try:
+        data = getWebPageContent(query.url)
+        gptresponse = generate_flashcard(data)
+        language = query.language
+        response =[]
+        for i in gptresponse:
+            response.append(translate_text_to_target_language(i, language.lower()))
+        background_tasks.add_task(add_history, query.email, response, "Flashcard")
+        return {"flashcards": response}
+    except Exception as e:
+        print(e)
+        raise HTTPException(status_code=400, detail="Some Error Occurred")
 
 @app.post("/presentation/")
-async def create_presentation(query: PresentationData):
+async def create_presentation(query: PresentationData, background_tasks: BackgroundTasks):
     print(query.url)
-    data = getWebPageContent(query.url)
-    response = generate_powerpoint(data)
-    return {"presentation": response}
+    try:
+        data = getWebPageContent(query.url)
+        response = generate_powerpoint(data)
+        background_tasks.add_task(add_history, query.email, response, "Presentation")
+        return {"presentation": response}
+    except Exception as e:
+        print(e)
+        raise HTTPException(status_code=400, detail="Some Error Occurred")
 
 @app.post("/context/")
 async def create_context(query: ContextQuery):
     print(query.url)
-    data = getWebPageContent(query.url)
-    response = generate_context_query(data, query.highlighted_text)
-    return {"context": response}
+    try:
+        data = getWebPageContent(query.url)
+        response = generate_context_query(data, query.highlighted_text)
+        return {"context": response}
+    except Exception as e:
+        print(e)
+        raise HTTPException(status_code=400, detail="Some Error Occurred")
+
+@app.post("/history/")
+async def retrieve_history(query: History):
+    response = await get_history(query.email)
+    return {"history": response}
+
+@app.post("/translatesummary/")
+async def translate_summary(query: TranslateSummary):
+    response = translate_text_to_target_language(query.text, query.language.lower())
+    return {"translation": response}
+
+@app.post("/translateflashcard/")
+async def translate_flashcard(query: TranslateFlashcard):
+    response =[]
+    for i in query.text:
+        response.append(translate_text_to_target_language(i, query.language.lower()))
+    return {"translation": response}
+
 

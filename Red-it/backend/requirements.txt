@@ -1,4 +1,4 @@
-Run the following commands to install the required packages (if not already insstalled):
+Run the following commands to install the required packages (if not already installed):
     1. pip install fastapi[all]
     2. pip install fastapi "uvicorn[standard]"
     3. pip install motor

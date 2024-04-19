@@ -29,7 +29,7 @@ async def root():
     return {"message": "Hello World"}
 
 @app.post("/newuser/")
-async def create_user(user: User):
+async def create_user(user: User):          #Creating a new user
     email_response = email_verifier(user.email)
     if email_response == False:
         raise HTTPException(status_code=400, detail="Invalid email")
@@ -47,7 +47,7 @@ async def create_user(user: User):
                     raise HTTPException(status_code=400, detail="User already exists")
 
 @app.post("/login/")
-async def login_user(user: UserLogin):
+async def login_user(user: UserLogin):   #Logging in the user
     response = await autheticate_user(user.email, user.password)
     if response == True:
         return {"message": "User has been authenticated"}
@@ -55,7 +55,7 @@ async def login_user(user: UserLogin):
         raise HTTPException(status_code=400, detail="Invalid credentials")
 
 @app.post("/summary/")
-async def create_summary(query: Summary, background_tasks: BackgroundTasks):
+async def create_summary(query: Summary, background_tasks: BackgroundTasks):   #Creating the summary
     print(query.url)
     try:
 
@@ -73,7 +73,7 @@ async def create_summary(query: Summary, background_tasks: BackgroundTasks):
         raise HTTPException(status_code=400, detail="Some Error Occurred")
 
 @app.post("/flashcard/")
-async def create_flashcards(query: Flashcard, background_tasks: BackgroundTasks):
+async def create_flashcards(query: Flashcard, background_tasks: BackgroundTasks):  #Creating the flashcards
     print(query.url)
     try:
         data = getWebPageContent(query.url)
@@ -92,7 +92,7 @@ async def create_flashcards(query: Flashcard, background_tasks: BackgroundTasks)
         raise HTTPException(status_code=400, detail="Some Error Occurred")
 
 @app.post("/presentation/")
-async def create_presentation(query: PresentationData, background_tasks: BackgroundTasks):
+async def create_presentation(query: PresentationData, background_tasks: BackgroundTasks):     #Creating the presentation
     print(query.url)
     try:
         data = getWebPageContent(query.url)
@@ -104,7 +104,7 @@ async def create_presentation(query: PresentationData, background_tasks: Backgro
         raise HTTPException(status_code=400, detail="Some Error Occurred")
 
 @app.post("/context/")
-async def create_context(query: ContextQuery):
+async def create_context(query: ContextQuery):     #Creating the context query
     print(query.url)
     try:
         data = getWebPageContent(query.url)
@@ -115,17 +115,17 @@ async def create_context(query: ContextQuery):
         raise HTTPException(status_code=400, detail="Some Error Occurred")
 
 @app.post("/history/")
-async def retrieve_history(query: History):
+async def retrieve_history(query: History):   #Retrieving the history of the user
     response = await get_history(query.email)
     return {"history": response}
 
 @app.post("/translatesummary/")
-async def translate_summary(query: TranslateSummary):
+async def translate_summary(query: TranslateSummary):  #Translating the summary to the target language
     response = translate_text_to_target_language(query.text, query.from_language.lower(), query.to_language.lower())
     return {"translation": response}
 
-@app.post("/translateflashcard/")
-async def translate_flashcard(query: TranslateFlashcard):
+@app.post("/translateflashcard/")  
+async def translate_flashcard(query: TranslateFlashcard): #Translating the flashcards to the target language
     response =[]
     for i in query.text:
         response.append(translate_text_to_target_language(i,query.from_language.lower(), query.to_language.lower()))

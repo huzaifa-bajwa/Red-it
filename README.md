@@ -30,6 +30,12 @@ For a personalized experience and the ability to save your preferences and flash
 2. Choose "Login/Signup" from the menu.
 3. You'll be prompted to either enter your existing credentials to log in or fill out a registration form to create a new account.
 
+### Dashboard
+
+For a personalized experience and the ability to generate summaries, presentation content and flashcards, utilize the dashboard buttons:
+
+1. Click on the respective button and wait for the magic to occur.
+   
 ### Creating Flashcards
 
 Enhance your learning and retention by creating flashcards from summarized content:
@@ -38,12 +44,21 @@ Enhance your learning and retention by creating flashcards from summarized conte
 2. A user-friendly interface will appear, allowing you to customize the flashcard with key points from the summary.
 3. Once customized, save the flashcard for later review.
 
+## History Feature
+1. Keep track of the summaries and flashcards created over time.
+2. Use history from the dashboard to view, manage, and revisit past summaries.
+
+## Presentation Feature
+1. Transform webpage summaries into presentation content for quickly preparing slides.
+
 ## Frontend Components
 
 - **Summary.jsx**: Component responsible for generating summaries.
 - **LoginSignup.jsx**: Component managing the authentication process.
 - **Flashcards.jsx**: Component allowing users to create digital flashcards.
 - **Popup.jsx**: Main interface for accessing extension features.
+- **Presentation.jsx**: Allows users to create presentation content from webpages.
+- **History.jsx**: Provides a log of past activities and summaries.
 
 ## Backend
 

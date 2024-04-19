@@ -62,7 +62,10 @@ async def create_summary(query: Summary, background_tasks: BackgroundTasks):
         data = getWebPageContent(query.url)
         gptresponse = generate_summary(data)
         language = query.language
-        response = translate_text_to_target_language(gptresponse, language.lower())
+        if language.lower() == "english":
+            background_tasks.add_task(add_history, query.email, gptresponse, "Summary")
+            return {"summary": gptresponse}
+        response = translate_text_to_target_language(gptresponse, "english",language.lower())
         background_tasks.add_task(add_history, query.email, response, "Summary")
         return {"summary": response}
     except Exception as e:
@@ -76,9 +79,12 @@ async def create_flashcards(query: Flashcard, background_tasks: BackgroundTasks)
         data = getWebPageContent(query.url)
         gptresponse = generate_flashcard(data)
         language = query.language
+        if language.lower() == "english":
+            background_tasks.add_task(add_history, query.email, gptresponse, "Flashcard")
+            return {"flashcards": gptresponse}
         response =[]
         for i in gptresponse:
-            response.append(translate_text_to_target_language(i, language.lower()))
+            response.append(translate_text_to_target_language(i, "english",language.lower()))
         background_tasks.add_task(add_history, query.email, response, "Flashcard")
         return {"flashcards": response}
     except Exception as e:
@@ -115,14 +121,14 @@ async def retrieve_history(query: History):
 
 @app.post("/translatesummary/")
 async def translate_summary(query: TranslateSummary):
-    response = translate_text_to_target_language(query.text, query.language.lower())
+    response = translate_text_to_target_language(query.text, query.from_language.lower(), query.to_language.lower())
     return {"translation": response}
 
 @app.post("/translateflashcard/")
 async def translate_flashcard(query: TranslateFlashcard):
     response =[]
     for i in query.text:
-        response.append(translate_text_to_target_language(i, query.language.lower()))
+        response.append(translate_text_to_target_language(i,query.from_language.lower(), query.to_language.lower()))
     return {"translation": response}
 
 

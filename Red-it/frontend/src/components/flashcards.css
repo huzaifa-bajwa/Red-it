@@ -1,129 +1,149 @@
-.card-grid{
-    background-color: #0b454b;
-    width: 300px;
-    margin: 0 auto 20px auto;
-    padding: 10px;
-    border-radius: 10px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    column-gap: 20px; 
-    row-gap: 10px;
-    height:350px;
-    max-height: 350px;
-    overflow-y: auto;
+.bdy4 {
+
+  background-color: #086d78;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  margin-top: 20px;
+  padding: 20px;
+} 
+
+.card-grid {
+  background-color: #0b454b;
+  width: 300px; /* Adjust the width as necessary to fit all cards uniformly */
+  margin: 0 auto 20px auto;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap; 
+  align-items: flex-start; /* Align items at the start of the flex line */
+  gap: 10px; /* Use gap property for spacing between cards */
+  height: 350px;
+  max-height: 350px;
+  overflow-y: auto; /* Allow scrolling within the grid if content exceeds the height */
 }
 
 .card {
-    background-color: #557d81;
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    width: auto;
-    height: auto;
+  background-color: #557d81;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  width: 280px; /* Ensuring all cards have the same width */
+  min-height: 150px; /* Optional: Set a minimum height for aesthetics */
+  max-height: 350px; /* Max height for individual cards */
+  overflow-y: auto; /* Allow scrolling within the card if content exceeds */
 }
 
-.bdy {
-    background-color: #086d78;
-    margin: 0;
-    font-family: Arial, sans-serif;
-    width: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 500px;
+
+
+.content-box4 {
+  background-color: #086d78;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 10px;
+  font-size: 14px;
 }
 
-.content-box {
-    background-color: #086d78;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin: 10px;
-    font-size: 14px;
+.header4 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 20px;
+  background-color: #557d81;
+  padding: 5px;
+  width: 350px;
+  height: 50px;
 }
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 20px;
-    background-color: #557d81;
-    padding: 5px;
-    width: 350px;
-    height: 50px;
-}
-
-.title {
-    padding-left: 10px;
-    font-weight: bold;
-    color: white;
-    text-align: left;
+.title4 {
+  padding-left: 10px;
+  font-weight: bold;
+  color: white;
+  text-align: left;
 }
 
 .font-adjusters button {
-    background-color: transparent;
-    border: none;
-    padding: 5px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-left: 5px;
-    color: white;
+  background-color: transparent;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 5px;
+  color: white;
 }
 
 .font-adjusters button:hover {
-    background-color: #010101;
+  background-color: #010101;
 }
 
 
 
 .dropbtn {
-    background-color: #557d81;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    width: 350px;
-    text-align: left;
-    border-radius: 20px;
-  }
+  background-color: #557d81;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  width: 350px;
+  text-align: left;
+  border-radius: 20px;
+}
 
-  .dropdown {
-    position: relative;
-    display: inline-block;
-    width: 3500px;
-    background-color: #086d78;
-  }
-  
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 3500px;
+  background-color: #086d78;
+}
 
-  .dropdown-content {
-    color: white;
-    display: none;
-    position: absolute;
-    background-color: #316d64be;
-    min-width: 3500px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    border-radius: 20px;
-  }
-  
 
-  .dropdown-content a {
-    color: white;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-  
-  .dropdown-content a:hover {background-color: #24534cbe}
-  
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-  
-  .dropdown:hover .dropbtn {
-    background-color: #24534cbe;
-  }
+.dropdown-content {
+  color: white;
+  display: none;
+  position: absolute;
+  background-color: #316d64be;
+  min-width: 3500px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 20px;
+}
 
-  
+
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #24534cbe
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #24534cbe;
+}
+
+
+.loading-container {
+  display: flex;
+  justify-content: flex-start;
+  /* Align content to the left */
+  align-items: flex-start;
+  /* Align content to the top */
+  width: 100%;
+  /* Full width of the card grid */
+  height: 100%;
+  /* Full height to maintain consistent grid area */
+  color: white;
+}

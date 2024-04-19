@@ -68,6 +68,7 @@ function LoginSignup() {
         const data = await response.json();
         alert("Login successful:", data);
         localStorage.setItem("loggedInUser", true);
+        localStorage.setItem("userEmail", email);
         setIsLoggedIn(true);
         // Proceed with user login flow
       } else {
@@ -80,6 +81,7 @@ function LoginSignup() {
   };
   const handleLogout = () => {
     localStorage.removeItem("loggedInUser");
+    localStorage.removeItem("userEmail");
     setIsLoggedIn(false);
   };
   const isLoggedIn2 = localStorage.getItem('loggedInUser');

@@ -4,93 +4,85 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #0b454b; /* Dark background for the entire page */
+  background-color: #0b454b;
 }
 
 .container {
   width: 400px;
-  padding: 20px;
+  height: 350px; /* Fixed height */
+  padding: 15px; /* Adjusted padding for better space utilization */
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: #086d78;
+  display: flex; /* Ensure it uses flex layout to manage internal elements */
+  flex-direction: column; /* Elements arranged vertically */
+  justify-content: space-between; /* Evenly space between elements */
 }
 
 .form {
-  background-color: #fff; /* White background for the form area */
+  background-color: #fff;
   border-radius: 20px;
-  padding: 40px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Adds shadow for depth */
-  min-height: 350px; /* Set a minimum height */
-  display: flex; /* Make it a flex container */
-  flex-direction: column; /* Stack children vertically */
-  justify-content: space-between; /* Distribute space between items */
+  padding: 20px; /* Keep padding to ensure form elements are not cramped */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex-grow: 1; /* Allow the form to expand to fill available space */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensure elements inside the form are evenly spaced */
 }
-
-/* Rest of your CSS for labels, inputs, and buttons */
 
 .form h2 {
-  margin-bottom: 20px;
-}
-
-.form-control label {
-  display: block;
-  color: #757575; /* Label color as per your design */
-  margin-bottom: 5px;
-  font-size: 20px; /* Adjust the font size as needed */
+  margin-bottom: 10px; /* Compact margin to save space */
 }
 
 .form-control {
-  position: relative; /* Set the position context for the absolutely positioned icon */
-  /* margin-top: ; */
-  margin-bottom: 20px;
+  position: relative;
+  margin-bottom: 10px; /* Reduce space between inputs */
 }
 
 .input-icon {
-  margin-right: 20px;
-  width: 20px; /* Example size, adjust as needed */
-  height: 20px; /* Example size, adjust as needed */
+  width: 20px; 
+  height: 20px; 
 }
 
 .form-control input {
-  width: 260px;
-  /* width:100%; */
-  padding: 10px 10px 10px 40px; /* Left padding to accommodate the icon inside the input */
+  width: calc(100% - 50px); /* Adjust width to ensure full utilization within form-control */
+  padding: 10px 10px 10px 35px; /* Increase left padding to accommodate icon */
   border: 2px solid #ccc;
   border-radius: 10px;
   font-size: 16px;
-  box-shadow: none; /* Remove any shadow if you don't need it */
+  box-shadow: none; /* Clean style without shadow */
+}
+
+.form-control .input-icon {
+  position: absolute;
+  left: 10px; /* Sufficiently spaced from the edge */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px; /* Consistent icon size */
+  height: 20px;
 }
 
 .btn {
   width: 100%;
   padding: 10px;
-  background-color:  #0056b3;
+  background-color: #0056b3;
   color: #ffffff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 .btn:hover {
-  background-color: #0056b3;
-}
-.form-control .input-icon {
-  position: absolute;
-  left: 10px; /* Adjust this value as needed to align the icon inside the input */
-  top: 50%;
-  transform: translateY(-50%);
-  width: 20px; /* Icon width */
-  height: 20px; /* Icon height */
-  color: #757575; /* Icon color */
+  background-color: #004080; /* Adjusted hover color */
 }
 
 .toggle-buttons {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .toggle-buttons button {
-  padding: 10px 20px;
+  padding: 8px 15px;
   border: none;
   background-color: #007bff;
   color: white;
@@ -107,7 +99,6 @@ body {
 }
 
 .invisible-placeholder {
-  display: block;
   visibility: hidden;
-  height: 20px; /* Match the height of your input fields */
+  height: 0; /* Remove placeholder height entirely */
 }

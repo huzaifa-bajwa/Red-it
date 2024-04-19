@@ -1,0 +1,96 @@
+.bdy3 {
+    background-color: #086d78;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* height: 500px; Corrected the height value to include px */
+    height: 100vh;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.content-box3 {
+    background-color: #086d78;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 10px;
+    font-size: 14px;
+    width: 360px; /* Adjusted width to fit within .bdy */
+}
+
+.header3 {
+    display: flex;
+    justify-content: space-between; /* Ensure items are spaced apart */
+    align-items: center;
+    border-radius: 20px;
+    background-color: #557d81;
+    padding: 5px;
+    width: 100%; /* Use full width of the container */
+    height: 50px;
+}
+
+.title3 {
+    padding-left: 10px;
+    font-weight: bold;
+    color: white;
+}
+
+.font-adjusters button {
+    background-color: transparent;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 5px;
+    color: white;
+}
+
+.font-adjusters button:hover {
+    background-color: #010101;
+}
+
+.summary-text3 {
+    color: white;
+}
+
+/* .summary-container3 {
+    background-color: #0b454b;
+    width: 100%; 
+    padding: 10px;
+    border-radius: 10px;
+    height: 300px;
+    overflow-y: auto;
+} */
+
+.summary-container3{
+    background-color: #0b454b;
+    width: 320px;
+    margin: 0 auto 20px auto;
+    padding: 10px;
+    border-radius: 10px;
+    height: 400px;
+    overflow-y: auto;
+    max-height: 500px;
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between; /* Space buttons evenly */
+    padding-top: 10px;
+}
+
+.navigation-buttons button {
+    background-color: #557d81;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.navigation-buttons button:hover {
+    background-color: #24534cbe;
+}

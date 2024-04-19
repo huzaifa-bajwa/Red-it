@@ -14,7 +14,7 @@ from translator import translate_text_to_target_language
 app = FastAPI()
 
 
-origins = ['https://localhost:3000']
+origins = ['*']
 
 app.add_middleware(
     CORSMiddleware,

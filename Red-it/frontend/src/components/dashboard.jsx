@@ -8,14 +8,15 @@ import Presentation from "./presentation.jsx";
 
 
 function Dashboard({ onLogout }) {
+    //states to store the current function and the login status
     const [func, setFunc] = useState('Default');
     const [loggedIn, setLoggedIn] = useState(true);
 
-
+    // Function to handle the click event of the buttons
     function handleClick(fun) {
         setFunc(fun);
     }
-
+    // Function to handle the logout event
     const handleLogout = () => {
         if (typeof onLogout === 'function') {
             onLogout();
@@ -27,7 +28,7 @@ function Dashboard({ onLogout }) {
             <LoginSignup />
         );
     }
-
+    // The interface shows the summary, flashcards, history and presentation components based on the button clicked.
     switch (func) {
         case 'Default':
             return (
@@ -41,6 +42,7 @@ function Dashboard({ onLogout }) {
                         </div>
                         <div class="btns-container">
                             <div class="button-container">
+                                
                                 <button class="dashboard-button" onClick={() => handleClick('Summary')}>Summary</button>
                                 <button class="dashboard-button" onClick={() => handleClick('Flashcards')}>Flashcards</button>
                                 <button class="dashboard-button" onClick={() => handleClick('Presentation')}>Presentation</button>
@@ -50,6 +52,7 @@ function Dashboard({ onLogout }) {
                     </div>
                 </div>
             );
+        // The summary, flashcards, history and presentation components are rendered based on the button clicked.
         case 'Summary':
             return <Summary />;
         case 'Flashcards':

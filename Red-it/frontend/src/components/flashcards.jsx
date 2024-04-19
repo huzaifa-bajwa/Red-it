@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './flashcards.css';
 
 function FlashCards() {
+    //states to store the font size, flashcards, current url and language
     const [fontSize, setFontSize] = useState(14); 
     const [fontSize2, setFontSize2] = useState(16);
     const [flashcards, setFlashcards] = useState([]);
@@ -10,6 +11,7 @@ function FlashCards() {
     const prevLanguageRef = useRef("");
     const prevFlashCards = useRef("");
 
+    // Function to handle the language change in the dropdown menu for the flashcards
     const handleLanguageChange = (newLanguage) => () => {
         if (flashcards.length === 0) {
             alert("Please wait for flashcards to generate");
@@ -19,17 +21,17 @@ function FlashCards() {
             setFlashcards([]);
         }
     };
-
+    // Function to increase the font size of the flashcards when the button is clicked
     const increaseFontSize = () => {
         setFontSize(prevFontSize => prevFontSize + 1);
         setFontSize2(prevFontSize => prevFontSize + 1);
     };
-
+    // Function to decrease the font size of the flashcards when the button is clicked
     const decreaseFontSize = () => {
         setFontSize(prevFontSize => (prevFontSize > 8 ? prevFontSize - 1 : prevFontSize));
         setFontSize2(prevFontSize => (prevFontSize > 10 ? prevFontSize - 1 : prevFontSize));
     };
-
+    // Function to fetch the current tab url and send a post request to the backend to get the flashcards content and set the flashcards state
     function fetchCurrentTabUrl() {
         return new Promise((resolve, reject) => {
             chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
@@ -44,7 +46,7 @@ function FlashCards() {
             });
         });
     }
-
+    // UseEffect hook to fetch the flashcards content when the component is mounted
     useEffect(() => {
         fetchCurrentTabUrl()
             .then((url) => {
@@ -80,7 +82,7 @@ function FlashCards() {
                 console.error("Error fetching current tab URL: " + error);
             });
     }, []);
-
+    // UseEffect hook to fetch the flashcards content when the language is changed
     useEffect(() => {
         if (prevLanguageRef.current !== "" && prevLanguageRef.current !== language) {
             fetchCurrentTabUrl()
@@ -117,7 +119,7 @@ function FlashCards() {
                 });
         }
     }, [language]);
-
+    // Function to parse the data from the backend to the required format
     const parsedata = (arr) => {
         return arr.map(str => {
             const splitIndex = str.indexOf(":");
@@ -134,6 +136,7 @@ function FlashCards() {
     const titleStyle = {
         fontSize: `${fontSize2}px` 
     };
+    // Return the flashcards component with the language dropdown and the flashcards content in the language selected. The handling of the language change and the font size change is also done here.
     return (
         <div className="bdy4">
             <div className="dropdown">

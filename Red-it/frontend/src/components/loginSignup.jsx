@@ -7,9 +7,10 @@ import Summary from './summary.jsx';
 import Dashboard from './dashboard.jsx';
 
 function LoginSignup() {
+  //states to store the login status and the login active status 
   const [isLoginActive, setIsLoginActive] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  
   const handleSignupSubmit = async (event) => {
     event.preventDefault();
     const form = event.target;
@@ -19,6 +20,7 @@ function LoginSignup() {
     const email = formData.get("email");
     const password = formData.get("password");
 
+    // Function to handle the signup submit event and fetch the user data from the backend
     try {
       const response = await fetch("http://127.0.0.1:8000/newuser/", {
         method: "POST",
@@ -43,7 +45,7 @@ function LoginSignup() {
       alert("Network or fetch error:", error.message);
     }
   };
-
+  // Function to handle the login submit event and fetch the user data from the backend
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
     const form = event.target;
@@ -79,6 +81,7 @@ function LoginSignup() {
       alert("Network or fetch error:", error.message);
     }
   };
+  // Function to handle the logout event 
   const handleLogout = () => {
     localStorage.removeItem("loggedInUser");
     localStorage.removeItem("userEmail");
@@ -88,7 +91,7 @@ function LoginSignup() {
   if (isLoggedIn2) {
     return <Dashboard onLogout={handleLogout} />;
   }
-
+  // The login and signup form is rendered based on the button clicked
   return (
     <div className="container">
       <div className="toggle-buttons">

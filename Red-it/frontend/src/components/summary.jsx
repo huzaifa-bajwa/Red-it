@@ -3,6 +3,7 @@ import "./summary.css";
 
 
 function Summary() {
+  //states to store the font size, summary and current url
   const [fontSize, setFontSize] = useState(14);
   const [summary, setSummary] = useState("Loading...");
   const [currentUrl, setCurrentUrl] = useState("");
@@ -10,6 +11,7 @@ function Summary() {
   const prevSummary = useRef("");
   const [language, setLanguage] = useState("Change Language");
 
+  // Function to handle the language change in the dropdown menu for the summary
   const handleLanguageChange = (newLanguage) => () => {
     if (summary === "Loading...") {
       alert("Please wait for summary to generate");
@@ -21,7 +23,7 @@ function Summary() {
     }
   };
   
-
+  // Function to fetch the current tab URL and send a post request to the backend to get the summary content and set the summary state
   function fetchCurrentTabUrl() {
     return new Promise((resolve, reject) => {
       chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
@@ -36,7 +38,7 @@ function Summary() {
       });
     });
   }
-
+  // UseEffect hook to fetch the summary content when the component is mounted
   useEffect(() => {
     fetchCurrentTabUrl()
       .then((url) => {
@@ -72,7 +74,7 @@ function Summary() {
       });
   }, []);
 
-
+    // UseEffect hook to fetch the summary content when the language is changed
     useEffect(() => {
       if (prevLanguageRef.current!=="" && prevLanguageRef.current !== language) {
         console.log(prevLanguageRef.current,"   ",language);
@@ -102,7 +104,7 @@ function Summary() {
       }
   }, [language]);
 
-
+  //Functions to increase and decrease the font size
   const increaseFontSize = () => {
     setFontSize((prevFontSize) => prevFontSize + 1);
   };
@@ -112,7 +114,7 @@ function Summary() {
       prevFontSize > 8 ? prevFontSize - 1 : prevFontSize
     );
   };
-
+  //returning the summary component
   return (
       <div className="bdy">
         <div class="dropdown">

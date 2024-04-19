@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./history.css";
 
 function History() {
+    //states to store the font size, content, content type, summary index, content array and type array
     const [fontSize, setFontSize] = useState(14);
     const [fontSize2, setFontSize2] = useState(16); 
     const [content, setContent] = useState([]); 
@@ -10,7 +11,7 @@ function History() {
     const [contentArray, setContentArray] = useState([]);
     const [typeArray, setTypeArray] = useState([]);
 
-
+    // UseEffect hook to fetch the history content when the component is mounted
     useEffect(() => {
         const email = localStorage.getItem('userEmail');
         const fetchData = async () => {
@@ -49,12 +50,12 @@ function History() {
     
         fetchData();
     }, []);
-
+    // Function to increase the font size when the button is clicked
     const increaseFontSize = () => {
         setFontSize((prevFontSize) => prevFontSize + 1);
         setFontSize2(prevFontSize => prevFontSize + 1); // Increase font size by 1
     };
-
+    // Function to decrease the font size when the button is clicked
     const decreaseFontSize = () => {
         setFontSize((prevFontSize) => Math.max(1, prevFontSize - 1));
         setFontSize2(prevFontSize => (prevFontSize > 1 ? prevFontSize - 1 : prevFontSize)); // Decrease font size by 1, but never below 1
@@ -66,7 +67,7 @@ function History() {
     const titleStyle = {
         fontSize: `${fontSize2}px` // Set font size dynamically
     };
-
+    // Function to navigate to the next history content when the button is clicked  
     const nextContent = () => {
         const nextIndex = (summaryIndex + 1) % contentArray.length;
         setSummaryIndex(nextIndex);
@@ -78,7 +79,7 @@ function History() {
             setContent(parseData(nextContentData));
         }
     };
-
+    // Function to navigate to the previous history content when the button is clicked
     const previousContent = () => {
         const prevIndex = (summaryIndex - 1 + contentArray.length) % contentArray.length;
         setSummaryIndex(prevIndex);
@@ -90,7 +91,7 @@ function History() {
             setContent(parseData(prevContentData));
         }
     };
-
+    // Function to parse the data from the backend to the required format
     const parseData = (arr) => {
         return arr.map(str => {
             const splitIndex = str.indexOf(":");
@@ -100,7 +101,7 @@ function History() {
             };
         });
     };
-
+    // Return the history component with the content and the navigation buttons, the onclick events of the buttons and the font size change buttons are also handled here.
     return (
         <div className="main3">
             <div className="bdy3">

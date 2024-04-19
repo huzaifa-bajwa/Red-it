@@ -1,32 +1,32 @@
 .card-grid {
-    background-color: #0b454b;
-    width: 300px; /* Adjust the width as necessary to fit all cards uniformly */
+    background-color: #6d6d6d;
+    width: 300px;
     margin: 0 auto 20px auto;
     padding: 10px;
     border-radius: 10px;
     display: flex;
     flex-wrap: wrap; 
-    align-items: flex-start; /* Align items at the start of the flex line */
-    gap: 10px; /* Use gap property for spacing between cards */
+    align-items: flex-start; 
+    gap: 10px;
     height: 350px;
     max-height: 350px;
-    overflow-y: auto; /* Allow scrolling within the grid if content exceeds the height */
+    overflow-y: auto; 
   }
   
   .card {
-    background-color: #557d81;
+    background-color: #4b4b4b;
     color: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    width: 280px; /* Ensuring all cards have the same width */
-    min-height: 150px; /* Optional: Set a minimum height for aesthetics */
-    max-height: 350px; /* Max height for individual cards */
-    overflow-y: auto; /* Allow scrolling within the card if content exceeds */
+    width: 280px;
+    min-height: 150px; 
+    max-height: 350px; 
+    overflow-y: auto;
   }
 
 .bdy5 {
-    background-color: #086d78;
+    background-color: #A6A6A6;
     margin: 0;
     font-family: Arial, sans-serif;
     width: 400px;
@@ -39,7 +39,7 @@
 }
 
 .content-box5 {
-    background-color: #086d78;
+    background-color: #A6A6A6;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin: 10px;
@@ -51,7 +51,7 @@
     justify-content: space-between;
     align-items: center;
     border-radius: 20px;
-    background-color: #557d81;
+    background-color: #DF353D;
     padding: 5px;
     width: 350px;
     height: 50px;

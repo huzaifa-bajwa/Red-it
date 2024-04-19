@@ -94,7 +94,7 @@ function Summary() {
                       .then(translation => {
                           console.log(translation);
                           setSummary(translation.translation);
-                          prevLanguageRef.current = language;  // Update the ref after successful translation
+                          prevLanguageRef.current = language;
                       })
                       .catch(error => console.error("Error fetching translation: " + error));
               })
@@ -114,7 +114,6 @@ function Summary() {
   };
 
   return (
-    // <div class="main">
       <div className="bdy">
         <div class="dropdown">
           <button class="dropbtn">{language}</button>
@@ -152,7 +151,6 @@ function Summary() {
           </div>
         </div>
       </div>
-    // </div>
   );
 
 }

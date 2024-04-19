@@ -3,10 +3,10 @@ import "./history.css";
 
 function History() {
     const [fontSize, setFontSize] = useState(14);
-    const [fontSize2, setFontSize2] = useState(16); // Initial font size
-    const [content, setContent] = useState([]); // Holds the parsed content
-    const [contentType, setContentType] = useState(""); // Tracks the type of content (summary, flashcard, presentation)
-    const [summaryIndex, setSummaryIndex] = useState(0); // Tracks the index of the current content
+    const [fontSize2, setFontSize2] = useState(16); 
+    const [content, setContent] = useState([]); 
+    const [contentType, setContentType] = useState(""); 
+    const [summaryIndex, setSummaryIndex] = useState(0);
     const [contentArray, setContentArray] = useState([]);
     const [typeArray, setTypeArray] = useState([]);
 

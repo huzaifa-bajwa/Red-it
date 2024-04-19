@@ -1,34 +1,33 @@
 .bdy3 {
-    background-color: #086d78;
+    background-color: #A6A6A6;
     margin: 0;
     font-family: Arial, sans-serif;
     width: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* height: 500px; Corrected the height value to include px */
     height: 100vh;
     margin-top: 20px;
     padding: 20px;
 }
 
 .content-box3 {
-    background-color: #086d78;
+    background-color: #A6A6A6;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin: 10px;
     font-size: 14px;
-    width: 360px; /* Adjusted width to fit within .bdy */
+    width: 360px; 
 }
 
 .header3 {
     display: flex;
-    justify-content: space-between; /* Ensure items are spaced apart */
+    justify-content: space-between; 
     align-items: center;
     border-radius: 20px;
-    background-color: #557d81;
+    background-color: #DF353D;
     padding: 5px;
-    width: 100%; /* Use full width of the container */
+    width: 100%;
     height: 50px;
 }
 
@@ -56,17 +55,8 @@
     color: white;
 }
 
-/* .summary-container3 {
-    background-color: #0b454b;
-    width: 100%; 
-    padding: 10px;
-    border-radius: 10px;
-    height: 300px;
-    overflow-y: auto;
-} */
-
 .summary-container3{
-    background-color: #0b454b;
+    background-color: #6d6d6d;
     width: 320px;
     margin: 0 auto 20px auto;
     padding: 10px;
@@ -78,12 +68,12 @@
 
 .navigation-buttons {
     display: flex;
-    justify-content: space-between; /* Space buttons evenly */
+    justify-content: space-between;
     padding-top: 10px;
 }
 
 .navigation-buttons button {
-    background-color: #557d81;
+    background-color: #DF353D;
     color: white;
     border: none;
     padding: 8px 16px;

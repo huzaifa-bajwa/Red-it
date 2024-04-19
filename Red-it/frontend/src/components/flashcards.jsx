@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import './flashcards.css';
 
 function FlashCards() {
-    const [fontSize, setFontSize] = useState(14); // Initial font size
-    const [fontSize2, setFontSize2] = useState(16); // Initial font size
+    const [fontSize, setFontSize] = useState(14); 
+    const [fontSize2, setFontSize2] = useState(16);
     const [flashcards, setFlashcards] = useState([]);
     const [currentUrl, setCurrentUrl] = useState("");
     const [language, setLanguage] = useState("Change Language");
@@ -21,13 +21,13 @@ function FlashCards() {
     };
 
     const increaseFontSize = () => {
-        setFontSize(prevFontSize => prevFontSize + 1); // Increase font size by 1
-        setFontSize2(prevFontSize => prevFontSize + 1); // Increase font size by 1
+        setFontSize(prevFontSize => prevFontSize + 1);
+        setFontSize2(prevFontSize => prevFontSize + 1);
     };
 
     const decreaseFontSize = () => {
-        setFontSize(prevFontSize => (prevFontSize > 8 ? prevFontSize - 1 : prevFontSize)); // Decrease font size by 1, but never below 1
-        setFontSize2(prevFontSize => (prevFontSize > 10 ? prevFontSize - 1 : prevFontSize)); // Decrease font size by 1, but never below 1
+        setFontSize(prevFontSize => (prevFontSize > 8 ? prevFontSize - 1 : prevFontSize));
+        setFontSize2(prevFontSize => (prevFontSize > 10 ? prevFontSize - 1 : prevFontSize));
     };
 
     function fetchCurrentTabUrl() {
@@ -68,11 +68,8 @@ function FlashCards() {
                         return response.json();
                     })
                     .then((data) => {
-                        console.log(data.flashcards);
-                        // setFlashcards(data.flashcards);
                         prevFlashCards.current = data.flashcards;
                         const parsedData = parsedata(data.flashcards);
-                        console.log(parsedData);
                         setFlashcards(parsedData);
                     })
                     .catch((error) => {
@@ -108,10 +105,7 @@ function FlashCards() {
                             return response.json();
                         })
                         .then((translation) => {
-                            console.log(translation.translation);
-                            // setFlashcards(data.flashcards);
                             const parsedData = parsedata(translation.translation);
-                            console.log(parsedData);
                             setFlashcards(parsedData);
                         })
                         .catch((error) => {
@@ -133,12 +127,12 @@ function FlashCards() {
             };
         });
     };
-
+    // Set font size dynamically
     const cardStyle = {
-        fontSize: `${fontSize}px` // Set font size dynamically
+        fontSize: `${fontSize}px`
     };
     const titleStyle = {
-        fontSize: `${fontSize2}px` // Set font size dynamically
+        fontSize: `${fontSize2}px` 
     };
     return (
         <div className="bdy4">

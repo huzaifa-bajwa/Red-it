@@ -4,39 +4,39 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #0b454b;
+  background-color: #A6A6A6;
 }
 
 .container {
   width: 400px;
-  height: 350px; /* Fixed height */
-  padding: 15px; /* Adjusted padding for better space utilization */
+  height: 350px; 
+  padding: 15px; 
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: #086d78;
-  display: flex; /* Ensure it uses flex layout to manage internal elements */
-  flex-direction: column; /* Elements arranged vertically */
-  justify-content: space-between; /* Evenly space between elements */
+  display: flex; 
+  flex-direction: column; 
+  justify-content: space-between; 
 }
 
 .form {
   background-color: #fff;
   border-radius: 20px;
-  padding: 20px; /* Keep padding to ensure form elements are not cramped */
+  padding: 20px; 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  flex-grow: 1; /* Allow the form to expand to fill available space */
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Ensure elements inside the form are evenly spaced */
+  justify-content: space-between;
 }
 
 .form h2 {
-  margin-bottom: 10px; /* Compact margin to save space */
+  margin-bottom: 10px;
 }
 
 .form-control {
   position: relative;
-  margin-bottom: 10px; /* Reduce space between inputs */
+  margin-bottom: 10px; 
 }
 
 .input-icon {
@@ -45,20 +45,20 @@ body {
 }
 
 .form-control input {
-  width: calc(100% - 50px); /* Adjust width to ensure full utilization within form-control */
-  padding: 10px 10px 10px 35px; /* Increase left padding to accommodate icon */
+  width: calc(100% - 50px);
+  padding: 10px 10px 10px 35px;
   border: 2px solid #ccc;
   border-radius: 10px;
   font-size: 16px;
-  box-shadow: none; /* Clean style without shadow */
+  box-shadow: none;
 }
 
 .form-control .input-icon {
   position: absolute;
-  left: 10px; /* Sufficiently spaced from the edge */
+  left: 10px;
   top: 50%;
   transform: translateY(-50%);
-  width: 20px; /* Consistent icon size */
+  width: 20px;
   height: 20px;
 }
 
@@ -72,7 +72,7 @@ body {
   cursor: pointer;
 }
 .btn:hover {
-  background-color: #004080; /* Adjusted hover color */
+  background-color: #004080;
 }
 
 .toggle-buttons {
@@ -100,5 +100,5 @@ body {
 
 .invisible-placeholder {
   visibility: hidden;
-  height: 0; /* Remove placeholder height entirely */
+  height: 0;
 }

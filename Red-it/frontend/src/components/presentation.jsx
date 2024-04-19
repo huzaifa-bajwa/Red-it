@@ -2,19 +2,19 @@ import React, { useState, useEffect } from 'react';
 import './presentation.css';
 
 function Presentation() {
-    const [fontSize, setFontSize] = useState(14); // Initial font size
-    const [fontSize2, setFontSize2] = useState(16); // Initial font size
+    const [fontSize, setFontSize] = useState(14); 
+    const [fontSize2, setFontSize2] = useState(16); 
     const [flashcards, setFlashcards] = useState([]);
     const [currentUrl, setCurrentUrl] = useState("");
 
     const increaseFontSize = () => {
-        setFontSize(prevFontSize => prevFontSize + 1); // Increase font size by 1
-        setFontSize2(prevFontSize => prevFontSize + 1); // Increase font size by 1
+        setFontSize(prevFontSize => prevFontSize + 1); 
+        setFontSize2(prevFontSize => prevFontSize + 1); 
     };
 
     const decreaseFontSize = () => {
-        setFontSize(prevFontSize => (prevFontSize > 1 ? prevFontSize - 1 : prevFontSize)); // Decrease font size by 1, but never below 1
-        setFontSize2(prevFontSize => (prevFontSize > 1 ? prevFontSize - 1 : prevFontSize)); // Decrease font size by 1, but never below 1
+        setFontSize(prevFontSize => (prevFontSize > 1 ? prevFontSize - 1 : prevFontSize)); 
+        setFontSize2(prevFontSize => (prevFontSize > 1 ? prevFontSize - 1 : prevFontSize)); 
     };
 
     function fetchCurrentTabUrl() {
@@ -80,10 +80,10 @@ function Presentation() {
     };
 
     const cardStyle = {
-        fontSize: `${fontSize}px` // Set font size dynamically
+        fontSize: `${fontSize}px` 
     };
     const titleStyle = {
-        fontSize: `${fontSize2}px` // Set font size dynamically
+        fontSize: `${fontSize2}px` 
     };
 
     return (

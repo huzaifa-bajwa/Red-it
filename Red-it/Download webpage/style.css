@@ -1,0 +1,194 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #D8E6ED;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    color: black; /* Adjusts text color */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding: 50px 100px; /* Adjusted padding */
+}
+
+.header-image {
+    max-width: 400px; /* Adjust based on your image size */
+    height: auto;
+    border-radius: 50%; /* Makes the image round */
+    border: 2px solid black; /* Adds a black border */
+}
+
+h1 {
+    font-size: 2.5em; /* Increases the font size of the heading */
+}
+
+.red-color {
+    color: #DF353D; /* Specifically changes the color of "Red" to red */
+}
+
+header p {
+    margin: 10px 0;
+    font-size: 1.5em; /* Increases the font size of the paragraph */
+}
+
+button {
+    background-color: #DF353D;
+    color: white;
+    border: none;
+    padding: 15px 30px; /* Increased padding for a larger button */
+    cursor: pointer;
+    font-size: 1.25em; /* Increases font size */
+    border-radius: 20px;
+    width: 350px; /* Increased width */
+    margin-top: 50px; /* Adds vertical distance between the button and the text above */
+    margin-left: 20px;
+}
+
+/* Rest of the CSS remains the same */
+
+
+button:hover {
+    background-color: #aa0b0b;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+.feature-container {
+    display: flex;
+    justify-content: space-around; /* Distributes space evenly around items */
+    /* flex-wrap: wrap; Allows items to wrap to the next line if needed */
+}
+
+.feature {
+    text-align: center; /* Centers the content of each feature */
+    flex-basis: 20%; /* Gives each feature a base width, adjust as needed */
+    margin: 10px; /* Adds some space around each feature */
+}
+
+.feature img {
+    width: 50%; /* Makes the image fill the container */
+    height: auto; /* Keeps the image aspect ratio */
+    border-radius: 10px; /* Optional: Rounds the corners of the images */
+    margin-top: 10px; /* Adds space between the title and the image */
+}
+
+nav {
+    background-color: #DF353D; /* Adjust the color to fit your design */
+    padding: 10px 20px;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center; /* Center the navigation links */
+    list-style-type: none; /* Removes bullet points from list items */
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 1em; /* Adjust based on your preference */
+}
+
+nav a:hover {
+    background-color: #aa0b0b; /* Adjust hover color as needed */
+    border-radius: 5px; /* Optional: adds rounded corners on hover */
+}
+
+/* Responsive adjustments (optional) */
+@media screen and (max-width: 600px) {
+    .nav-container {
+        flex-direction: column; /* Stack nav items under each other on small screens */
+    }
+}
+
+#about h2 {
+    font-size: 3em; /* Increase the font size */
+    font-weight: bold; /* Make the font bold */
+    color: #DF353D; /* Change the color to red */
+    text-shadow: 3px 3px 3px #333; /* Add a shadow to give a 3D effect */
+}
+#contact h2 {
+    font-size: 3em; /* Increase the font size */
+    font-weight: bold; /* Make the font bold */
+    color: #DF353D; /* Change the color to red */
+    text-shadow: 3px 3px 3px #333; /* Add a shadow to give a 3D effect */
+}
+
+
+.info-container {
+    /* display: flex; */
+    justify-content: flex-end; /* Distributes space evenly around items */
+    /* align-items: start; Aligns items to the start of the container */
+    flex-wrap: wrap; /* Allows items to wrap onto the next line if needed */
+    padding: 50px 00px;
+}
+
+#about, #contact {
+    flex: 1; /* Each section will take up equal space */
+    min-width: 300px; /* Ensures that the columns don't get too narrow */
+    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+    padding: 20px; /* Adds some padding inside the sections */
+    margin: 10px; /* Adds space between the sections */
+}
+
+/* You can optionally adjust the size and layout based on the viewport width */
+@media screen and (max-width: 800px) {
+    .info-container {
+        flex-direction: column; /* Stacks the sections on smaller screens */
+        align-items: center; /* Centers the stacked sections */
+    }
+
+    #about, #contact {
+        flex: none; /* Removes the flex grow/shrink/basis properties */
+        max-width: 100%; /* Allows the sections to fill the container */
+        margin: 10px 0; /* Adjusts the margin for stacked layout */
+    }
+}
+
+
+#team {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align the content horizontally */
+    text-align: center; /* Center align the text */
+}
+
+/* If you also want to center the `.team-member` items in a row with wrapping: */
+#team .team-member-container {
+    display: flex;
+    justify-content: center; /* Horizontally center the team members */
+    flex-wrap: wrap; /* Allow team members to wrap to the next line */
+}
+
+.team-member {
+    margin: 10px;
+    padding: 10px;
+    /* background-color: #e7f1ff; */
+    display: inline-block;
+    margin: 10px; /* Adjust as necessary to maintain spacing */
+    flex: 0 0 auto; /* Do not grow or shrink the items */
+    text-align: center;
+    width: 200px;
+}
+.team-member-photo {
+    width: 150px; /* Adjust the size as necessary */
+    height: 150px; /* Make sure the height and width are the same */
+    border-radius: 50%; /* This will create the circle effect */
+    margin-bottom: 10px; /* Space between the image and the name */
+    object-fit: cover; /* This will ensure the image covers the area without distortion */
+    display: block; /* Change display to block to avoid inline default spacing */
+    margin-left: auto; /* These two margin properties will center the image horizontally */
+    margin-right: auto;
+}

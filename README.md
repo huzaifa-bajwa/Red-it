@@ -2,7 +2,7 @@
 
 ## Description
 
-This web extension is designed to enhance your browsing experience by providing quick, concise summaries of web content. Perfect for researchers, students, or anyone looking to digest information efficiently, it offers a streamlined way to grasp the essence of web pages without reading through all the details. Features include a user-friendly interface for easy summarization, login/signup functionality for personalized experiences, and flashcards for memorizing important information.
+This web extension is designed to enhance your browsing experience by providing quick, concise summaries of web content. Perfect for researchers, students, or anyone looking to digest information efficiently, it offers a streamlined way to grasp the essence of web pages without reading through all the details. Features include a user-friendly interface for easy summarization, login/signup functionality for personalized experiences, flashcards for memorizing important information, Content for quickly preparing presentation slides and a history feature to keep track of last few requests. The extension also offers a range of languages to choose from for Flashcards and summaries.
 
 ## Installation Instructions
 

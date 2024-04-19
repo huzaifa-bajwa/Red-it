@@ -48,6 +48,22 @@ button {
     margin-top: 50px; /* Adds vertical distance between the button and the text above */
     margin-left: 20px;
 }
+.download-button {
+    background-color: #DF353D;
+    color: white;
+    border: none;
+    padding: 15px 30px; /* Increased padding for a larger button */
+    cursor: pointer;
+    font-size: 1.25em; /* Increases font size */
+    border-radius: 20px;
+    width: 350px; /* Increased width */
+    margin-top: 50px; /* Adds vertical distance between the button and the text above */
+    margin-left: 20px;
+    text-align: center;
+    display: inline-block; /* Ensures proper sizing and clickable area */
+    text-decoration: none; /* Removes underline from links */
+}
+
 
 /* Rest of the CSS remains the same */
 

@@ -1,5 +1,5 @@
 from translate import Translator
-import translate
+
 
 ''''
 Available languages
@@ -43,12 +43,13 @@ def key_for_a_specific_Language(language):
         return 'ru'
     elif language == 'spanish':
         return 'es'
+    elif language == 'english':
+        return 'en'
 
-def translate_text_to_target_language(text: str, target_language: str):  #Translating the text to the target language
-    if target_language == 'english':
-        return text
+def translate_text_to_target_language(text: str, from_language: str, target_language: str):  #Translating the text to the target language
     target_language = key_for_a_specific_Language(target_language)
-    translator = Translator(to_lang=target_language)
+    source_lang_code = key_for_a_specific_Language(from_language)
+    translator = Translator(from_lang=source_lang_code, to_lang=target_language)
     if len(text) > 500: #500 CHARS is max limit
         translated_text = ""
         while len(text) > 500:         #Translating 500 characters at a time
@@ -63,4 +64,3 @@ def translate_text_to_target_language(text: str, target_language: str):  #Transl
     else:
         translation = translator.translate(text)
         return translation
-

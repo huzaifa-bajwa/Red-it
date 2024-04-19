@@ -35,10 +35,12 @@ class History(BaseModel):   #This is the model for the History
     email: str
 
 class TranslateSummary(BaseModel):   #This is the model for the Translation of the Summary
-    language: str
+    from_language: str
+    to_language: str
     text: str
 class TranslateFlashcard(BaseModel):   #This is the model for the Translation of the Flashcards
-    language: str
+    from_language: str
+    to_language: str
     text: list
 
 

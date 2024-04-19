@@ -70,3 +70,7 @@ The backend folder contains files implementing the backend of the extension:
 - **server.py**: Sets up and runs the FastAPI application.
 - **testing.js**: Suite for testing backend functionalities.
 - **requirements.txt**: Lists backend dependencies.
+- **email_verify.py**: Verify the signup emails actually exists.
+- **name_validation.py**: Ensures that the names provided in requests meet certain criteria and are sanitized to prevent improper input.
+- **translator.py**: Handles the translation of text between different languages, enabling the application to support a wider user base.
+- **webscraping.py**: Utilized for extracting data from web pages, this component supports various features that require content from external sources.

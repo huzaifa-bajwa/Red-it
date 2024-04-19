@@ -65,7 +65,7 @@
   max-height: 500px;
 }
 
-/* .dropbtn {
+.dropbtn {
   background-color: #DF353D;
   color: white;
   padding: 16px;
@@ -105,7 +105,7 @@
 }
 
 .dropdown-content a:hover {
-  background-color: #6d6d6d
+  background-color: #A6A6A6
 }
 
 .dropdown:hover .dropdown-content {
@@ -113,5 +113,5 @@
 }
 
 .dropdown:hover .dropbtn {
-  background-color: #6d6d6d;
-} */
+  background-color: #A6A6A6;
+}

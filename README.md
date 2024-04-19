@@ -44,11 +44,11 @@ Enhance your learning and retention by creating flashcards from summarized conte
 2. A user-friendly interface will appear, allowing you to customize the flashcard with key points from the summary.
 3. Once customized, save the flashcard for later review.
 
-## History Feature
+### History Feature
 1. Keep track of the summaries and flashcards created over time.
 2. Use history from the dashboard to view, manage, and revisit past summaries.
 
-## Presentation Feature
+### Presentation Feature
 1. Transform webpage summaries into presentation content for quickly preparing slides.
 
 ## Frontend Components
@@ -59,6 +59,7 @@ Enhance your learning and retention by creating flashcards from summarized conte
 - **Popup.jsx**: Main interface for accessing extension features.
 - **Presentation.jsx**: Allows users to create presentation content from webpages.
 - **History.jsx**: Provides a log of past activities and summaries.
+- **Dashboard.jsx**: Provides interface to get summaries, flashcards, presentation content and visit history of requests. 
 
 ## Backend
 
